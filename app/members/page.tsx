@@ -95,18 +95,6 @@ export default function Members() {
       </section>
 
       {/* Join CTA */}
-      <section className="cta-section">
-        <div className="container text-center">
-          <Music size={48} className="cta-icon" />
-          <h2 className="cta-title">Interested in Joining?</h2>
-          <p className="cta-text">
-            We are always looking for new voices to join our family. 
-            If you have a passion for singing and a heart for ministry, we'd love to hear from you.
-          </p>
-          <button className="cta-btn">Contact Us to Audition</button>
-        </div>
-      </section>
-
       <Footer />
 
       <style jsx>{`

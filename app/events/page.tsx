@@ -78,7 +78,7 @@ export default function Events() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="section-title">Past Events Gallery</h2>
-            <p className="section-subtitle">Memories of God's grace</p>
+            <p className="section-subtitle">Memories of God&apos;s grace</p>
           </div>
 
           <div className="gallery-grid">

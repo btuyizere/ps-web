@@ -32,7 +32,7 @@ export default function About() {
                 we spread the Gospel through music, inspiring hope and transformation.
               </p>
               <p className="text-lg text-gray-600">
-                Our name "Pépinière" (Nursery) reflects our commitment to nurturing spiritual growth 
+                Our name &quot;Pépinière&quot; (Nursery) reflects our commitment to nurturing spiritual growth 
                 and musical talent, raising a generation of worshippers who serve God in spirit and truth.
               </p>
             </div>
@@ -55,7 +55,7 @@ export default function About() {
               <div className="value-card">
                 <Award className="value-icon" size={32} />
                 <h3>Service</h3>
-                <p>Humility in ministry to God's people.</p>
+                <p>Humility in ministry to God&apos;s people.</p>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function About() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="section-title">Our Journey</h2>
-            <p className="section-subtitle">Milestones of God's faithfulness</p>
+            <p className="section-subtitle">Milestones of God&apos;s faithfulness</p>
           </div>
           
           <div className="timeline">
@@ -82,14 +82,14 @@ export default function About() {
               <div className="content">
                 <span className="year">2006</span>
                 <h3>First Album</h3>
-                <p>Released "Umwigisha Uhebuje", reaching thousands across Rwanda with messages of grace.</p>
+                <p>Released &quot;Umwigisha Uhebuje&quot;, reaching thousands across Rwanda with messages of grace.</p>
               </div>
             </div>
             <div className="timeline-item left">
               <div className="content">
                 <span className="year">2021</span>
                 <h3>25 Years Jubilee</h3>
-                <p>We celebrate 25 years in God's missions in Rwanda, sharing our music and testimony.</p>
+                <p>We celebrate 25 years in God&apos;s missions in Rwanda, sharing our music and testimony.</p>
               </div>
             </div>
             <div className="timeline-item right">

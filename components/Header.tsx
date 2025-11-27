@@ -21,7 +21,8 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <Link href="/" className="logo-link">
-            <Music className="logo-icon" />
+            {/* <Music className="logo-icon" /> */}
+            <img src="images/logo.png" className="logo-icon" alt="" />
             <span className="logo-text">
               Chorale Pépinière du Seigneur
             </span>

@@ -1,6 +1,5 @@
-// components/EventCard.tsx
 "use client";
-import { Calendar, MapPin, Clock } from "lucide-react";
+import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface EventCardProps {
@@ -9,36 +8,37 @@ interface EventCardProps {
   time: string;
   location: string;
   description: string;
-  image?: string;
 }
 
-const EventCard = ({ title, date, time, location, description, image }: EventCardProps) => {
+export default function EventCard({ title, date, time, location, description }: EventCardProps) {
   return (
     <div className="event-card">
-      <div className="event-date">
-        <span className="day">{date.split(' ')[0]}</span>
-        <span className="month">{date.split(' ')[1]}</span>
-      </div>
-      
-      <div className="event-content">
-        <h3 className="event-title">{title}</h3>
+      <div className="card-content">
+        <div className="date-badge">
+          <Calendar size={16} className="mb-1" />
+          <span className="date-text">{date}</span>
+        </div>
         
-        <div className="event-details">
-          <div className="detail-item">
-            <Clock size={16} />
+        <h3 className="card-title">{title}</h3>
+        
+        <div className="meta-row">
+          <div className="meta-item">
+            <Clock size={14} />
             <span>{time}</span>
           </div>
-          <div className="detail-item">
-            <MapPin size={16} />
+          <div className="meta-item">
+            <MapPin size={14} />
             <span>{location}</span>
           </div>
         </div>
-
-        <p className="event-description">{description}</p>
         
-        <Link href="/events" className="event-link">
-          Event Details &rarr;
-        </Link>
+        <p className="card-desc">{description}</p>
+        
+        <div className="card-footer">
+          <Link href="/events" className="details-link">
+            Details <ArrowRight size={16} />
+          </Link>
+        </div>
       </div>
 
       <style jsx>{`
@@ -46,110 +46,84 @@ const EventCard = ({ title, date, time, location, description, image }: EventCar
           background: white;
           border-radius: 12px;
           overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          border: 1px solid #e5e7eb;
           display: flex;
-          position: relative;
-          border: 1px solid var(--color-gray-200);
+          flex-direction: column;
         }
 
         .event-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          transform: translateY(-4px);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        .event-date {
-          background-color: var(--color-navy-900);
-          color: white;
+        .card-content {
           padding: 1.5rem;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-width: 100px;
+          height: 100%;
         }
 
-        .day {
-          font-size: 1.8rem;
-          font-weight: 700;
-          line-height: 1;
-        }
-
-        .month {
-          font-size: 1rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-top: 0.2rem;
-          color: var(--color-gold-500);
-        }
-
-        .event-content {
-          padding: 1.5rem;
-          flex: 1;
-        }
-
-        .event-title {
-          font-family: var(--font-heading);
-          font-size: 1.25rem;
-          color: var(--color-navy-900);
-          margin-bottom: 0.8rem;
-        }
-
-        .event-details {
-          display: flex;
-          gap: 1rem;
-          margin-bottom: 1rem;
-          color: var(--color-gray-600);
-          font-size: 0.9rem;
-        }
-
-        .detail-item {
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-        }
-
-        .event-description {
-          color: var(--color-gray-600);
-          font-size: 0.95rem;
-          margin-bottom: 1.2rem;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .event-link {
-          color: var(--color-gold-500);
-          font-weight: 600;
-          font-size: 0.9rem;
+        .date-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.3rem;
+          gap: 0.5rem;
+          color: var(--color-gold-500, #d4af37);
+          font-weight: 600;
+          font-size: 0.875rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--color-navy-900, #0f172a);
+          margin-bottom: 0.75rem;
+          line-height: 1.4;
+        }
+
+        .meta-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          color: #64748b;
+          font-size: 0.875rem;
+        }
+
+        .meta-item {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+        }
+
+        .card-desc {
+          color: #4b5563;
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 1.5rem;
+          flex-grow: 1;
+        }
+
+        .card-footer {
+          margin-top: auto;
+        }
+
+        .details-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--color-gold-500, #d4af37);
+          font-weight: 600;
+          font-size: 0.9rem;
           transition: gap 0.2s ease;
         }
 
-        .event-link:hover {
-          gap: 0.6rem;
-        }
-
-        @media (max-width: 640px) {
-          .event-card {
-            flex-direction: column;
-          }
-          
-          .event-date {
-            flex-direction: row;
-            gap: 0.5rem;
-            padding: 1rem;
-            width: 100%;
-          }
-
-          .day { font-size: 1.5rem; }
+        .details-link:hover {
+          gap: 0.75rem;
         }
       `}</style>
     </div>
   );
-};
-
-export default EventCard;
+}

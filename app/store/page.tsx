@@ -90,7 +90,7 @@ export default function Store() {
         tracks: 15,
       },
       {
-        id: 8,
+        id: 9,
         name: "Nabonye Inshuti",
         price: "5,000",
         image: "/images/album-placeholder-9.jpg",
@@ -99,7 +99,7 @@ export default function Store() {
         tracks: 13,
       },
       {
-        id: 8,
+        id: 10,
         name: "Umwigisha Uhebuje",
         price: "5,000",
         image: "/images/album-placeholder-10.jpg",
@@ -110,33 +110,36 @@ export default function Store() {
     ],
     singles: [
       {
-        id: 9,
+        id: 11,
         name: "Sinzateshuka",
         price: "1,000",
         image: "/images/single-placeholder-1.jpg",
         spotifyId: "1RYTHypLyqljecrInBbJ2h", // Example ID
         description: "Powerful worship single",
+        tracks: 1,
       },
       {
-        id: 10,
+        id: 12,
         name: "Ubuntu",
         price: "1,000",
         image: "/images/single-placeholder-2.jpg",
         spotifyId: "20VSvlnD4YewiNqotHplWR", // Example ID
         description: "Inspirational track",
+        tracks: 1,
       },
       {
-        id: 11,
+        id: 13,
         name: "Humura",
         price: "1,000",
         image: "/images/single-placeholder-3.jpg",
         spotifyId: "3GyJErAEegzY4FuZ1qtsNs", // Example ID
         description: "Contemporary gospel",
+        tracks: 1,
       },
     ],
     ep: [
       {
-        id: 12,
+        id: 14,
         name: "Nzabona Umwami",
         price: "5,000",
         image: "/images/ep-placeholder-1.jpg",
@@ -149,14 +152,17 @@ export default function Store() {
   const allProducts = [...products.albums, ...products.singles, ...products.ep];
 
   const filteredProducts = allProducts.filter((product) => {
+    if (!("tracks" in product)) return false;
+
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase());
+
     const matchesFilter =
       activeFilter === "all" ||
-      (activeFilter === "albums" && products.albums.includes(product)) ||
-      (activeFilter === "singles" && products.singles.includes(product)) ||
-      (activeFilter === "ep" && products.ep.includes(product));
+      (activeFilter === "albums" && products.albums.includes(product as any)) ||
+      (activeFilter === "singles" && products.singles.includes(product as any)) ||
+      (activeFilter === "ep" && products.ep.includes(product as any));
 
     return matchesSearch && matchesFilter;
   });
@@ -172,7 +178,8 @@ export default function Store() {
             <div className="spotify-text">
               <h1 className="page-title">Music Store</h1>
               <p className="page-subtitle">
-                Stream our latest releases on Spotify or purchase digital copies to support the ministry.
+                Stream our latest releases on Spotify or purchase digital copies
+                to support the ministry.
               </p>
             </div>
             <div className="spotify-embed-wrapper">
@@ -186,10 +193,7 @@ export default function Store() {
         {/* Filters & Search */}
         <div className="controls-section">
           <div className="search-wrapper">
-            <Search
-              className="search-icon"
-              size={20}
-            />
+            <Search className="search-icon" size={20} />
             <input
               type="text"
               placeholder="Search music..."
@@ -208,13 +212,17 @@ export default function Store() {
             </button>
             <button
               onClick={() => setActiveFilter("albums")}
-              className={`filter-btn ${activeFilter === "albums" ? "active" : ""}`}
+              className={`filter-btn ${
+                activeFilter === "albums" ? "active" : ""
+              }`}
             >
               Albums
             </button>
             <button
               onClick={() => setActiveFilter("singles")}
-              className={`filter-btn ${activeFilter === "singles" ? "active" : ""}`}
+              className={`filter-btn ${
+                activeFilter === "singles" ? "active" : ""
+              }`}
             >
               Singles
             </button>
@@ -232,10 +240,16 @@ export default function Store() {
           <div className="bundle-content">
             <h3 className="bundle-title">Special Bundle Offer!</h3>
             <p className="bundle-text">
-              Get all 11 albums + 3 singles for only 50,000 RWF (Save 8,000 RWF!)
+              Get all 11 albums + 3 singles for only 50,000 RWF (Save 8,000
+              RWF!)
             </p>
           </div>
-          <a href="https://api.whatsapp.com/send?phone=250788549539&text=Hello, I would like to order Full Collection" className="btn btn-white text-gold" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://api.whatsapp.com/send?phone=250788549539&text=Hello, I would like to order Full Collection"
+            className="btn btn-white text-gold"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Buy Full Collection
           </a>
 
@@ -251,9 +265,9 @@ export default function Store() {
               key={product.id}
               product={product}
               type={
-                products.albums.includes(product)
+                products.albums.includes(product as any)
                   ? "album"
-                  : products.singles.includes(product)
+                  : products.singles.includes(product as any)
                   ? "single"
                   : "ep"
               }
@@ -292,7 +306,6 @@ export default function Store() {
           gap: 2rem;
           align-items: center;
         }
-
 
         @media (min-width: 900px) {
           .spotify-content {
@@ -387,7 +400,11 @@ export default function Store() {
         }
 
         .bundle-banner {
-          background: linear-gradient(135deg, var(--color-gold-500), var(--color-gold-600));
+          background: linear-gradient(
+            135deg,
+            var(--color-gold-500),
+            var(--color-gold-600)
+          );
           border-radius: 12px;
           padding: 2rem;
           color: white;
@@ -436,15 +453,21 @@ export default function Store() {
         }
 
         @media (min-width: 640px) {
-          .product-grid { grid-template-columns: repeat(2, 1fr); }
+          .product-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         @media (min-width: 1024px) {
-          .product-grid { grid-template-columns: repeat(3, 1fr); }
+          .product-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
 
         @media (min-width: 1280px) {
-          .product-grid { grid-template-columns: repeat(4, 1fr); }
+          .product-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
         }
 
         .empty-state {

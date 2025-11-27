@@ -142,7 +142,7 @@ export default function Home() {
           <div className="music-content">
             <div className="music-text">
               <h4 className="section-subtitle">Latest Release</h4>
-              <h2 className="section-title text-white">New Album: <br/>"Divine Grace"</h2>
+              <h2 className="section-title text-white">New Album: <br/>&quot;Divine Grace&quot;</h2>
               <p className="section-desc text-gray-300">
                 Our latest studio album features 12 powerful tracks of worship, praise, and 
                 reflection. Available now on all major streaming platforms and our store.

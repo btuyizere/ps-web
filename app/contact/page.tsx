@@ -42,7 +42,7 @@ export default function Contact() {
         <div className="container hero-content">
           <h1 className="hero-title">Get in Touch</h1>
           <p className="hero-subtitle">
-            We'd love to hear from you. Reach out for orders, collaborations, or prayer requests.
+            We&apos;d love to hear from you. Reach out for orders, collaborations, or prayer requests.
           </p>
         </div>
       </section>
@@ -64,7 +64,7 @@ export default function Contact() {
                 <div className="info-details">
                   <h3>Email Us</h3>
                   <a href="mailto:pepiniereduseigneur96@gmail.com">pepiniereduseigneur96@gmail.com</a>
-                  <p className="sub-text">We'll respond within 24 hours</p>
+                  <p className="sub-text">We&apos;ll respond within 24 hours</p>
                 </div>
               </div>
 
